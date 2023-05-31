@@ -16,6 +16,9 @@ namespace VillaAPI.Controllers
         }
 
         [HttpGet("{id:int}")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(404)]
         public ActionResult<VillaDTO> GetVilla(int id)
         {
             if (id == 0)

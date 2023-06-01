@@ -59,15 +59,16 @@ namespace VillaAPI.Controllers
         }
 
         [ProducesResponseType(StatusCodes.Status204NoContent)]
-
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [HttpDelete("{id:int}", Name = "DeleteVilla")]
-        public IActionResult DeleteVilla(int id)
+        public IActionResult DeleteVilla(int id )
         {
             if (id == 0)
             {
                 return BadRequest();
             }
-            var villa = VillaStore.villaList.FirstOrDefault(x=x=>x.Id == id);
+            var villa = VillaStore.villaList.FirstOrDefault(x=>x.Id == id);
             if (villa == null)
             {
                 return NotFound();
